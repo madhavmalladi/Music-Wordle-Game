@@ -1,30 +1,33 @@
-import React from 'react'
-import { useContext } from 'react'
-import { AppContext } from "../App"
+import React from 'react';
+import { useContext } from 'react';
+import { AppContext } from "../App";
 
-function DebutYear({ attemptPos, attemptVal }) {
-  const { guessedArtist, correctArtist } = useContext(AppContext);
+function DebutYear({ attemptVal }) {
+  const { board, correctArtist } = useContext(AppContext);
+  const guessedArtist = board[attemptVal]?.guessedArtist;
   let color = "";
   let arrow = "";
 
-  if (guessedArtist && guessedArtist.debutYear === correctArtist.debutYear) {
-    color = "correct";  // Exact match
-  } 
-  else if (guessedArtist && Math.abs(guessedArtist.debutYear - correctArtist.debutYear) <= 7) {
-    color = "almost";  // Within 7 years
-    arrow = guessedArtist.debutYear < correctArtist.debutYear ? "⬆️" : "⬇️";  // Up or down arrow based on the guess
-  } 
-  else if (guessedArtist && guessedArtist.debutYear !== correctArtist.debutYear) {
-    color = "wrong";  // Completely incorrect debut year
-    arrow = guessedArtist.debutYear < correctArtist.debutYear ? "⬆️" : "⬇️";  // Show arrow even for wrong guess
+  if (guessedArtist) {
+    if (guessedArtist.debutYear === correctArtist.debutYear) {
+      color = "correct";
+    } 
+    else if (Math.abs(guessedArtist.debutYear - correctArtist.debutYear) <= 7) {
+      color = "almost";
+      arrow = guessedArtist.debutYear < correctArtist.debutYear ? "⬆️" : "⬇️";
+    } 
+    else {
+      color = "wrong";
+      arrow = guessedArtist.debutYear < correctArtist.debutYear ? "⬆️" : "⬇️"; 
+    }
   }
 
   return (
     <div className="debutyear" id={color}>
       {guessedArtist && guessedArtist.debutYear ? guessedArtist.debutYear : ""}
-      {arrow && ` ${arrow}`} {/* Add a space before the arrow */}
+      {arrow && ` ${arrow}`}
     </div>
-  )
+  );
 }
 
 export default DebutYear;

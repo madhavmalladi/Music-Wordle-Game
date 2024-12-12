@@ -1,21 +1,25 @@
 import React, { useContext } from 'react';
 import { AppContext } from "../App";
 
-function Name({attemptPos, attemptVal}) {
-    const { guessedArtist, correctArtist } = useContext(AppContext);
+function Name({ attemptVal }) {
+    const { board, correctArtist } = useContext(AppContext); 
+
+    const guessedArtist = board[attemptVal]?.guessedArtist;
     let color = "";
 
-    if (guessedArtist && guessedArtist.name === correctArtist.name) {
-        color = "correct";
-    } 
-    else if (guessedArtist && guessedArtist.name !== correctArtist.name) {
-        color = "wrong"; 
+    if (guessedArtist) {
+        if (guessedArtist.name === correctArtist.name) {
+            color = "correct"; 
+        } else {
+            color = "wrong"; 
+        }
     }
+
     return (
       <div className="name" id={color}>
-        {guessedArtist ? guessedArtist.name : ""} {/* Check if guessedArtist exists */}
+        {guessedArtist ? guessedArtist.name : ""} 
       </div>
-    )
+    );
 }
 
 export default Name;

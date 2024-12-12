@@ -28,10 +28,12 @@ nav h1 {
   color: white;
   font-size: 45px;
 }
-nav sub{
+
+nav sub {
   font-family: 'Courier New', Courier, monospace;
   color: red;
 }
+
 .game {
   width: 100vw;
   height: calc(100vh - 170px);
@@ -77,15 +79,14 @@ nav sub{
   background-color: #3a393c;
 }
 
-
 .line1 {
   flex: 33%;
   display: flex;
   flex-direction: row;
-  display: flex;
   justify-content: center;
   margin: 5px;
 }
+
 .line2 {
   flex: 33%;
   display: flex;
@@ -93,6 +94,7 @@ nav sub{
   justify-content: center;
   margin: 5px;
 }
+
 .line3 {
   flex: 33%;
   display: flex;
@@ -118,9 +120,11 @@ nav sub{
 #big {
   width: 100px;
 }
+
 #disabled {
   background-color: #3a393c;
 }
+
 .dropdown-container {
   position: relative;
   width: 300px;
@@ -160,6 +164,7 @@ nav sub{
 .dropdown-item:hover {
   background: #f0f0f0;
 }
+
 .dropdown-container {
   display: flex;
   align-items: center;
@@ -168,34 +173,35 @@ nav sub{
 }
 
 .guess-button {
-  background-color: gold; /* Gold background */
-  color: black; /* Black text */
-  border: none; /* No border */
-  padding: 10px 20px; /* Padding for size */
-  font-size: 16px; /* Text size */
-  font-weight: bold; /* Bold text */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor */
-  margin-left: 10px; /* Space between dropdown and button */
-  transition: transform 0.2s, background-color 0.2s; /* Smooth hover effects */
-  position: relative; /* Relative positioning */
-  top: -10%; /* Raise the button 10% of its height */
+  background-color: gold;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: transform 0.2s, background-color 0.2s;
+  position: relative;
+  top: -10%;
 }
 
 .guess-button:hover {
-  background-color: #ffc107; /* Slightly darker gold */
-  transform: scale(1.05); /* Slight zoom effect */
+  background-color: #ffc107;
+  transform: scale(1.05);
 }
 
 .guess-button:active {
-  background-color: #e5b800; /* Even darker gold when clicked */
-  transform: scale(1); /* Reset zoom */
+  background-color: #e5b800;
+  transform: scale(1);
 }
+
 .header-row {
   display: grid;
   grid-template-columns: var(--name-width, 1fr) var(--genre-width, 1fr) var(--birth-year-width, 1fr) var(--debut-year-width, 1fr) var(--monthly-streams-width, 1fr) var(--num-albums-width, 1fr);
   width: 980px;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .header-item {
@@ -234,7 +240,7 @@ nav sub{
 .board {
   display: flex;
   flex-direction: column;
-  width: 1000px; 
+  width: 1000px;
 }
 
 .row {
@@ -247,8 +253,5 @@ nav sub{
   border: 1px solid black;
   height: 100px;
 }
-.name span {
-  font-size: 20px;  /* Adjust the size of the arrow */
-  margin-left: 10px;  /* Space between the name and the arrow */
-}
+
 

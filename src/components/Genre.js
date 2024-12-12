@@ -1,23 +1,26 @@
-import React from 'react'
-import {useContext} from 'react'
-import { AppContext } from "../App"
+import React from 'react';
+import { useContext } from 'react';
+import { AppContext } from "../App";
 
-function Genre({attemptPos, attemptVal}) {
-  const { guessedArtist, correctArtist } = useContext(AppContext);
+function Genre({ attemptVal }) {
+  const { board, correctArtist } = useContext(AppContext); 
+  const guessedArtist = board[attemptVal]?.guessedArtist;
   let color = "";
 
-  if (guessedArtist && guessedArtist.genre === correctArtist.genre) {
+ 
+  if (guessedArtist) {
+    if (guessedArtist.genre === correctArtist.genre) {
       color = "correct";
-  } 
-  else if (guessedArtist && guessedArtist.genre !== correctArtist.genre) {
+    } else {
       color = "wrong"; 
+    }
   }
 
   return (
     <div className="genre" id={color}>
       {guessedArtist && guessedArtist.genre ? guessedArtist.genre : ""}
     </div>
-  )
+  );
 }
 
-export default Genre
+export default Genre;

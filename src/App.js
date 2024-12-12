@@ -3,34 +3,65 @@ import Board from './components/Board';
 import React, { useState, useEffect } from 'react';
 import Info from './Info.js';
 import { createContext } from 'react'; 
-import { defaultBoard } from './Info.js'
+import { defaultBoard } from './Info.js';
 import DropDown from './components/DropDown';
 import { Artist, answerBank } from './Artist.js';
+import PopUp from './components/PopUp';
 
 export const AppContext = createContext();
 
 function App() {
   const [board, setBoard] = useState(defaultBoard);
   const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0});
-  
-  // Initialize correctArtist once when the component mounts
   const [correctArtist] = useState(answerBank[Math.floor(Math.random() * answerBank.length)]);
-  
-  const [selectedArtist, setSelectedArtist] = useState(null); // Track selected artist
-  const [guessedArtist, setGuessedArtist] = useState(null); // Track guessed artist
-  const [guessed, setGuessed] = useState(false); // Track if a guess has been made
-  const [firstGuessMade, setFirstGuessMade] = useState(false); // Track if the first guess has been made
+  const [selectedArtist, setSelectedArtist] = useState(null); 
+  const [guessedArtist, setGuessedArtist] = useState(null); 
+  const [guessed, setGuessed] = useState(false); 
+  const [firstGuessMade, setFirstGuessMade] = useState(false); 
+  const [gameOver, setGameOver] = useState(false); 
+  const [showPopUp, setShowPopUp] = useState(false); 
+  const [resetSearch, setResetSearch] = useState(false); 
 
   useEffect(() => {
-    console.log(correctArtist); // Log once when correctArtist is set
-  }, [correctArtist]);  // Dependency array ensures this only runs once when correctArtist is set
-  
+    console.log(correctArtist); 
+  }, [correctArtist]);
+
   const handleGuess = () => {
     if (selectedArtist) {
-      setGuessedArtist(selectedArtist); // Set guessed artist
-      setGuessed(true); // Set guessed to true when the button is clicked
-      setFirstGuessMade(true); // Set firstGuessMade to true after the first guess
+      const updatedBoard = [...board];
+      updatedBoard[currAttempt.attempt] = {
+        guessedArtist: selectedArtist,
+      };
+      setBoard(updatedBoard);
+  
+      setGuessedArtist(selectedArtist);
+      setGuessed(true); 
+      setFirstGuessMade(true); 
+
+      setCurrAttempt((prevAttempt) => ({
+        attempt: prevAttempt.attempt + 1,
+        letterPos: 0,
+      }));
+
+      if (selectedArtist === correctArtist) {
+        setGameOver(true);
+        setShowPopUp(true);
+      }
+  
+      setSelectedArtist(null);
+      setGuessed(false);
+      setResetSearch(true);
     }
+  };
+
+  const handlePlayAgain = () => {
+    setGameOver(false); 
+    setShowPopUp(false); 
+    window.location.reload();
+  };
+
+  const handleClose = () => {
+    setShowPopUp(false); 
   };
 
   return (
@@ -39,11 +70,12 @@ function App() {
         <h1>Music Wordle - Guess the Artist!</h1>
         <sub>Note: Numerical Data was retrieved from Spotify as of December 2024</sub>
       </nav>
-      <AppContext.Provider value={{board, setBoard, correctArtist, guessedArtist, firstGuessMade}}>
-        <DropDown onSelect={(artist) => setSelectedArtist(artist)} /> 
-        {/* Update state when an artist is selected */}
+      <AppContext.Provider value={{board, setBoard, correctArtist, guessedArtist, firstGuessMade, currAttempt}}>
+        <DropDown 
+          onSelect={(artist) => setSelectedArtist(artist)} 
+          resetSearch={resetSearch}
+        /> 
         
-        {/* Display the guess button only when an artist is selected */}
         {selectedArtist && !guessed && (
           <button className="guess-button" onClick={handleGuess}>
             Guess Artist
@@ -51,6 +83,15 @@ function App() {
         )}
         
         <Board />
+        
+        {showPopUp && (
+          <PopUp 
+            artistName={correctArtist.name} 
+            isCorrect={selectedArtist === correctArtist}
+            onClose={handleClose}
+            onPlayAgain={handlePlayAgain}
+          />
+        )}
       </AppContext.Provider> 
     </div>
   );

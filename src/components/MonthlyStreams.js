@@ -1,30 +1,33 @@
-import React from 'react'
-import { useContext } from 'react'
-import { AppContext } from "../App"
+import React from 'react';
+import { useContext } from 'react';
+import { AppContext } from "../App";
 
-function MonthlyStreams({ attemptPos, attemptVal }) {
-  const { guessedArtist, correctArtist } = useContext(AppContext);
+function MonthlyStreams({ attemptVal }) {
+  const { board, correctArtist } = useContext(AppContext);
+  const guessedArtist = board[attemptVal]?.guessedArtist;
   let color = "";
   let arrow = "";
 
-  if (guessedArtist && guessedArtist.monthlyStreams === correctArtist.monthlyStreams) {
-    color = "correct";  // Exact match
-  } 
-  else if (guessedArtist && Math.abs(guessedArtist.monthlyStreams - correctArtist.monthlyStreams) <= 10) {
-    color = "almost";  // Within 10 monthly streams
-    arrow = guessedArtist.monthlyStreams < correctArtist.monthlyStreams ? "⬆️" : "⬇️";  // Up or down arrow based on the guess
-  } 
-  else if (guessedArtist && guessedArtist.monthlyStreams !== correctArtist.monthlyStreams) {
-    color = "wrong";  // Completely incorrect monthly streams
-    arrow = guessedArtist.monthlyStreams < correctArtist.monthlyStreams ? "⬆️" : "⬇️";  // Show arrow even for wrong guess
+  if (guessedArtist) {
+    if (guessedArtist.monthlyStreams === correctArtist.monthlyStreams) {
+      color = "correct";
+    } 
+    else if (Math.abs(guessedArtist.monthlyStreams - correctArtist.monthlyStreams) <= 10) {
+      color = "almost";
+      arrow = guessedArtist.monthlyStreams < correctArtist.monthlyStreams ? "⬆️" : "⬇️"; 
+    } 
+    else {
+      color = "wrong";
+      arrow = guessedArtist.monthlyStreams < correctArtist.monthlyStreams ? "⬆️" : "⬇️"; 
+    }
   }
 
   return (
     <div className="monthlystreams" id={color}>
-      {guessedArtist && guessedArtist.monthlyStreams ? guessedArtist.monthlyStreams + "m": ""}
-      {arrow && ` ${arrow}`} {/* Add a space before the arrow */}
+      {guessedArtist && guessedArtist.monthlyStreams ? guessedArtist.monthlyStreams + "m" : ""}
+      {arrow && ` ${arrow}`}
     </div>
-  )
+  );
 }
 
-export default MonthlyStreams
+export default MonthlyStreams;
