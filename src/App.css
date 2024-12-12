@@ -1,38 +1,226 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #493939;
+  width: 100vw;
+  height: 105vh;
+  display: grid;
+  place-items: center; 
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  padding: 0%;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav {
+  height: 75px;
+  width: 100%;
+  margin: 0;
+  border-bottom: 1px solid grey;
+  display: grid;
+  place-items: center;
 }
+
+nav h1 {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  color: white;
+  font-size: 45px;
+}
+nav sub{
+  font-family: 'Courier New', Courier, monospace;
+  color: red;
+}
+.game {
+  width: 100vw;
+  height: calc(100vh - 170px);
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  flex-direction: column;
+}
+
+.board {
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.name,
+.genre,
+.birthyear,
+.debutyear,
+.monthlystreams,
+.numalbums {
+  height: 75px;
+  border: 1px solid grey;
+  margin: 5px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: bolder;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#correct {
+  background-color: #528d4e;
+}
+
+#almost {
+  background-color: #b49f39;
+}
+
+#wrong {
+  background-color: #3a393c;
+}
+
+
+.line1 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+.line2 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+.line3 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+}
+
+.key {
+  width: 50px;
+  height: 70px;
+  margin: 5px;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  background-color: grey;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+#big {
+  width: 100px;
+}
+#disabled {
+  background-color: #3a393c;
+}
+.dropdown-container {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 10;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-size: 16px;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+.board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.header-row {
+  display: grid;
+  grid-template-columns: var(--name-width, 1fr) var(--genre-width, 1fr) var(--birth-year-width, 1fr) var(--debut-year-width, 1fr) var(--monthly-streams-width, 1fr) var(--num-albums-width, 1fr);
+  width: 980px;
+  margin-bottom: 10px; 
+}
+
+.header-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #444;
+  color: white;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.genre {
+  --genre-width: 2fr;
+}
+
+.birth-year {
+  --birth-year-width: 1fr;
+}
+
+.debut-year {
+  --debut-year-width: 1fr;
+}
+
+.monthly-streams {
+  --monthly-streams-width: 3fr;
+}
+
+.num-albums {
+  --num-albums-width: 1.5fr;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  width: 1000px; 
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--name-width, 1fr) var(--genre-width, 1fr) var(--birth-year-width, 1fr) var(--debut-year-width, 1fr) var(--monthly-streams-width, 1fr) var(--num-albums-width, 1fr);
+  margin: 5px;
+}
+
+.box {
+  border: 1px solid black;
+  height: 100px;
+}
+
