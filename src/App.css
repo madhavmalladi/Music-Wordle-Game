@@ -202,6 +202,7 @@ nav sub {
   grid-template-columns: var(--name-width, 1fr) var(--genre-width, 1fr) var(--birth-year-width, 1fr) var(--debut-year-width, 1fr) var(--monthly-streams-width, 1fr) var(--num-albums-width, 1fr);
   width: 980px;
   margin-bottom: 10px;
+  margin-left: 1%; /* Adds 10% margin to the left, shifting it to the right */
 }
 
 .header-item {
