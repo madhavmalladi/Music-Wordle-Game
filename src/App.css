@@ -160,13 +160,37 @@ nav sub{
 .dropdown-item:hover {
   background: #f0f0f0;
 }
-.board-container {
+.dropdown-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: 20px;
+  justify-content: center;
+  margin: 20px 0;
 }
 
+.guess-button {
+  background-color: gold; /* Gold background */
+  color: black; /* Black text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding for size */
+  font-size: 16px; /* Text size */
+  font-weight: bold; /* Bold text */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  margin-left: 10px; /* Space between dropdown and button */
+  transition: transform 0.2s, background-color 0.2s; /* Smooth hover effects */
+  position: relative; /* Relative positioning */
+  top: -10%; /* Raise the button 10% of its height */
+}
+
+.guess-button:hover {
+  background-color: #ffc107; /* Slightly darker gold */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.guess-button:active {
+  background-color: #e5b800; /* Even darker gold when clicked */
+  transform: scale(1); /* Reset zoom */
+}
 .header-row {
   display: grid;
   grid-template-columns: var(--name-width, 1fr) var(--genre-width, 1fr) var(--birth-year-width, 1fr) var(--debut-year-width, 1fr) var(--monthly-streams-width, 1fr) var(--num-albums-width, 1fr);
@@ -222,5 +246,9 @@ nav sub{
 .box {
   border: 1px solid black;
   height: 100px;
+}
+.name span {
+  font-size: 20px;  /* Adjust the size of the arrow */
+  margin-left: 10px;  /* Space between the name and the arrow */
 }
 
