@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Music-Wordle-Game/static/css/main.cefea738.css",
+    "main.js": "/Music-Wordle-Game/static/js/main.b933f87c.js",
+    "static/js/453.7935ac90.chunk.js": "/Music-Wordle-Game/static/js/453.7935ac90.chunk.js",
+    "index.html": "/Music-Wordle-Game/index.html",
+    "main.cefea738.css.map": "/Music-Wordle-Game/static/css/main.cefea738.css.map",
+    "main.b933f87c.js.map": "/Music-Wordle-Game/static/js/main.b933f87c.js.map",
+    "453.7935ac90.chunk.js.map": "/Music-Wordle-Game/static/js/453.7935ac90.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cefea738.css",
+    "static/js/main.b933f87c.js"
+  ]
+}
