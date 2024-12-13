@@ -93,7 +93,7 @@ function App() {
         {showPopUp && (
           <PopUp 
             artistName={correctArtist.name} 
-            isCorrect={selectedArtist === correctArtist}
+            isCorrect={guessedArtist === correctArtist}
             onClose={handleClose}
             onPlayAgain={handlePlayAgain}
           />
