@@ -24,6 +24,10 @@ function App() {
   const [resetSearch, setResetSearch] = useState(false); 
   const [showHelpPopUp, setShowHelpPopUp] = useState(false);
 
+  useEffect(() => {
+    document.title = 'Music Wordle';
+  }, []);
+
   const handleGuess = () => {
     if (selectedArtist) {
       const updatedBoard = [...board];
