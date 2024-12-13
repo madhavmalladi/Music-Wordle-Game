@@ -22,9 +22,6 @@ function App() {
   const [showPopUp, setShowPopUp] = useState(false);
   const [resetSearch, setResetSearch] = useState(false); 
 
-  useEffect(() => {
-    console.log(correctArtist); 
-  }, [correctArtist]);
 
   const handleGuess = () => {
     if (selectedArtist) {
