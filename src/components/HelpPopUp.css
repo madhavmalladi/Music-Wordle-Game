@@ -1,0 +1,64 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: lightblue;
+    padding: 40px;
+    border-radius: 10px;
+    width: 600px;
+    text-align: left;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: black;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: black; 
+  }
+  
+  .help-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px;
+    color: black; 
+  }
+  
+  .help-list li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .highlight {
+    font-weight: bold;
+  }
+  
+  .highlight.yellow {
+    color: yellow;
+  }
+  
+  .close-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  

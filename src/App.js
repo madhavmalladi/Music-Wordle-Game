@@ -7,6 +7,7 @@ import { defaultBoard } from './Info.js';
 import DropDown from './components/DropDown';
 import { Artist, answerBank } from './Artist.js';
 import PopUp from './components/PopUp';
+import HelpPopUp from './components/HelpPopUp';
 
 export const AppContext = createContext();
 
@@ -21,7 +22,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
   const [resetSearch, setResetSearch] = useState(false); 
-
+  const [showHelpPopUp, setShowHelpPopUp] = useState(false);
 
   const handleGuess = () => {
     if (selectedArtist) {
@@ -75,6 +76,7 @@ function App() {
       <nav>
         <h1>Music Wordle - Guess the Artist!</h1>
         <sub>Note: Numerical Data was retrieved from Spotify as of December 2024</sub>
+        <button className="help-btn" onClick={() => setShowHelpPopUp(true)}>?</button>
       </nav>
       <AppContext.Provider value={{ board, setBoard, correctArtist, guessedArtist, firstGuessMade, currAttempt }}>
         <DropDown onSelect={(artist) => setSelectedArtist(artist)} resetSearch={resetSearch} /> 
@@ -94,6 +96,9 @@ function App() {
             onClose={handleClose}
             onPlayAgain={handlePlayAgain}
           />
+        )}
+        {showHelpPopUp && (
+          <HelpPopUp onClose={() => setShowHelpPopUp(false)} />
         )}
       </AppContext.Provider> 
     </div>
