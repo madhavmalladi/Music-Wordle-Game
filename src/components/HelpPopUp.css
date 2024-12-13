@@ -1,4 +1,4 @@
-.popup-overlay {
+.popup-overlay-help {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,7 +11,7 @@
     z-index: 1000;
   }
   
-  .popup-content {
+  .popup-content-help {
     background: lightblue;
     padding: 40px;
     border-radius: 10px;
@@ -50,7 +50,7 @@
     color: yellow;
   }
   
-  .close-btn {
+  .close-btn-help {
     display: block;
     margin: 20px auto 0;
     padding: 10px 20px;
