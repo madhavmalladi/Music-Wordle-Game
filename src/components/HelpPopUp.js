@@ -3,8 +3,8 @@ import './HelpPopUp.css';
 
 function HelpPopUp({ onClose }) {
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
+    <div className="popup-overlay-help">
+      <div className="popup-content-help">
         <h2>Help - Categories Explained</h2>
         <ul className="help-list">
           <li>
@@ -27,7 +27,7 @@ function HelpPopUp({ onClose }) {
             <span className="highlight yellow"> Yellow</span> indicates within 3 albums of the correct artist.
           </li>
         </ul>
-        <button className="close-btn" onClick={onClose}>Close</button>
+        <button className="close-btn-help" onClick={onClose}>Close</button>
       </div>
     </div>
   );
